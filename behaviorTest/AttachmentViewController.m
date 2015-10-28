@@ -32,7 +32,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    boxView = [[UIView alloc] initWithFrame:CGRectMake(100, 0, 70, 70)];
+    boxView = [[UIView alloc] initWithFrame:CGRectMake(100, 10, 70, 70)];
     boxView.backgroundColor = [UIColor redColor];
     [self.view addSubview:boxView];
     
@@ -41,7 +41,7 @@
      */
     
     boxView.userInteractionEnabled = YES;
-    boxView.layer.delegate = self;
+//    boxView.layer.delegate = self;
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panView:)];
     [boxView addGestureRecognizer:pan];
     
@@ -74,7 +74,7 @@
 
 - (id<CAAction>)actionForLayer:(CALayer *)layer forKey:(NSString *)event
 {
-    NSLog(@"layer.center = %@, boxView.frame = %@", NSStringFromCGPoint(layer.position), NSStringFromCGRect(boxView.frame));
+//    NSLog(@"layer.center = %@, boxView.frame = %@", NSStringFromCGPoint(layer.position), NSStringFromCGRect(boxView.frame));
     if (layer.position.y >= self.view.frame.size.height - boxView.frame.size.height / 2 - 0.001)
     {
         isGravity = NO;
@@ -107,7 +107,7 @@
     [animator addBehavior:dynamicBehavior];
 }
 
-- (void)collisionBehavior:(UICollisionBehavior *)behavior endedContactForItem:(nonnull id<UIDynamicItem>)item withBoundaryIdentifier:(nullable id<NSCopying>)identifier
+- (void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(nonnull id<UIDynamicItem>)item withBoundaryIdentifier:(nullable id<NSCopying>)identifier atPoint:(CGPoint)p
 {
     NSString *identStr = (NSString *)identifier;
     isGravity = YES;

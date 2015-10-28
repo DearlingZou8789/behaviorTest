@@ -28,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.navigationBar.translucent = NO;
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -49,25 +49,24 @@
     barrierView.backgroundColor = [UIColor greenColor];
     [self.view addSubview:barrierView];
     
-    pointView = [[UIView alloc] initWithFrame:CGRectMake(120, 250, 10, 10)];
+    pointView = [[UIView alloc] initWithFrame:CGRectMake(140, 250, 10, 10)];
     pointView.backgroundColor = [UIColor blueColor];
-    [self.view addSubview:pointView];
     pointView.layer.cornerRadius = pointView.bounds.size.width / 2.0;
     pointView.layer.borderColor = pointView.backgroundColor.CGColor;
-    pointView.layer.borderWidth = 1.0f;
+    [self.view addSubview:pointView];
 
     animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
     animator.delegate = self;
     //重力行为
     gravity = [[UIGravityBehavior alloc] initWithItems:@[boxView]];
     gravity.gravityDirection = CGVectorMake(0.0, 0.1);
-    gravity.magnitude = 2;
+    gravity.magnitude = 0.9;
     //碰撞行为
     collision = [[UICollisionBehavior alloc] initWithItems:@[boxView]];
     [collision addBoundaryWithIdentifier:@"barrier" fromPoint:barrierView.frame.origin toPoint:CGPointMake(barrierView.frame.origin.x + barrierView.frame.size.width, barrierView.frame.origin.y)];
     collision.translatesReferenceBoundsIntoBoundary = YES;
     collision.collisionDelegate = self;
-    collision.collisionMode = UICollisionBehaviorModeEverything;
+    collision.collisionMode = UICollisionBehaviorModeBoundaries;
     //行为限制
     dynamicBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[boxView]];
     dynamicBehavior.elasticity = 0.5;
@@ -82,22 +81,6 @@
     }
     return nil;
 }
-
-/**
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
-{
-    if ([keyPath isEqualToString:@"frame"])
-    {
-        CGRect rect = [change[@"new"] CGRectValue];
-        NSLog(@"rect = %@", NSStringFromCGRect(rect));
-        if (rect.origin.y + rect.size.height == self.view.frame.size.height)
-        {
-            isGravity = NO;
-            [animator removeAllBehaviors];
-        }
-    }
-}
-*/
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -124,7 +107,7 @@
     [animator addBehavior:dynamicBehavior];
 }
 
-- (void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item withBoundaryIdentifier:(id<NSCopying>)identifier atPoint:(CGPoint)p
+- (void)collisionBehavior:(UICollisionBehavior *)behavior endedContactForItem:(nonnull id<UIDynamicItem>)item withBoundaryIdentifier:(nullable id<NSCopying>)identifier
 {
     NSString *identStr = (NSString *)identifier;
     isGravity = YES;

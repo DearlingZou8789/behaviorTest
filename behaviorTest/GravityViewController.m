@@ -21,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.translucent = NO;
     // Do any additional setup after loading the view.
     
     redView = [[UIView alloc] initWithFrame:CGRectMake(100, 20, 50, 50)];
@@ -39,6 +40,7 @@
     //设置重力的方向
     CGVector gravityDirection = {0.0, 0.1};
     [gravity setGravityDirection:gravityDirection];
+    gravity.magnitude = 1;
 //    [animator addBehavior:gravity];
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "DynamicViewController.h"
+#import <CoreMotion/CoreMotion.h>
 
 @interface DynamicViewController ()
 
@@ -17,6 +18,50 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.navigationController.navigationBar.translucent = NO;
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    UIView *mountainView = [[UIView alloc] initWithFrame:CGRectMake(20, 30, 100, 130)];
+    mountainView.backgroundColor = [UIColor magentaColor];
+    [self.view addSubview:mountainView];
+    
+    UIView *treeView = [[UIView alloc] initWithFrame:CGRectMake(150, 70, 20, 70)];
+    treeView.backgroundColor = [UIColor greenColor];
+    [self.view addSubview:treeView];
+    
+    UIView *cowBodyView = [[UIView alloc] initWithFrame:CGRectMake(50, 200, 40, 20)];
+    cowBodyView.backgroundColor = [UIColor brownColor];
+    [self.view addSubview:cowBodyView];
+    
+    //设置山在X轴的偏移范围-50.0~50.0
+    UIInterpolatingMotionEffect *effect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    effect.minimumRelativeValue = @-50.0;
+    effect.maximumRelativeValue = @50.0;
+    [mountainView addMotionEffect:effect];
+    
+    UIInterpolatingMotionEffect *effect1 = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    effect1.minimumRelativeValue = @-50.0;
+    effect1.maximumRelativeValue = @50.0;
+    [mountainView addMotionEffect:effect1];
+    
+    //设置树在X轴的偏移范围-100~100
+    UIInterpolatingMotionEffect *effect2 = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    effect2.minimumRelativeValue = @-100;
+    effect2.maximumRelativeValue = @100;
+    [treeView addMotionEffect:effect2];
+    UIInterpolatingMotionEffect *effect3 = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    effect3.minimumRelativeValue = @-100;
+    effect3.maximumRelativeValue = @100;
+    [treeView addMotionEffect:effect3];
+    
+    UIInterpolatingMotionEffect *effect4 = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    effect4.minimumRelativeValue = @-100;
+    effect4.maximumRelativeValue = @100;
+    [cowBodyView addMotionEffect:effect4];
+    UIInterpolatingMotionEffect *effect5 = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    effect5.minimumRelativeValue = @-100;
+    effect5.maximumRelativeValue = @100;
+    [cowBodyView addMotionEffect:effect5];
 }
 
 - (void)didReceiveMemoryWarning {

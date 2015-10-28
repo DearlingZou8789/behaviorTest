@@ -22,6 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.translucent = NO;
     
     UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(100, 20, 50, 50)];
     redView.backgroundColor = [UIColor redColor];
@@ -39,6 +40,7 @@
     //设置重力的方向
     CGVector gravityDirection = {0.0, 0.1};
     [gravity setGravityDirection:gravityDirection];
+    gravity.magnitude = 1.0;
     
     //碰撞行为
     collision = [[UICollisionBehavior alloc] initWithItems:@[redView]];

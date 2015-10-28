@@ -8,7 +8,7 @@
 
 #import "AttachmentViewController.h"
 
-@interface AttachmentViewController ()<UICollisionBehaviorDelegate>
+@interface AttachmentViewController ()<UICollisionBehaviorDelegate, UIDynamicAnimatorDelegate>
 {
     UIDynamicAnimator *animator;
     UIGravityBehavior *gravity;
@@ -35,9 +35,13 @@
     boxView = [[UIView alloc] initWithFrame:CGRectMake(100, 0, 70, 70)];
     boxView.backgroundColor = [UIColor redColor];
     [self.view addSubview:boxView];
+    
+    /** 没有作用
     [boxView addObserver:self forKeyPath:@"frame" options:0 context:NULL];
-
+     */
+    
     boxView.userInteractionEnabled = YES;
+    boxView.layer.delegate = self;
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panView:)];
     [boxView addGestureRecognizer:pan];
     
@@ -53,20 +57,33 @@
     pointView.layer.borderWidth = 1.0f;
 
     animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+    animator.delegate = self;
     //重力行为
     gravity = [[UIGravityBehavior alloc] initWithItems:@[boxView]];
     gravity.gravityDirection = CGVectorMake(0.0, 0.1);
+    gravity.magnitude = 2;
     //碰撞行为
     collision = [[UICollisionBehavior alloc] initWithItems:@[boxView]];
     [collision addBoundaryWithIdentifier:@"barrier" fromPoint:barrierView.frame.origin toPoint:CGPointMake(barrierView.frame.origin.x + barrierView.frame.size.width, barrierView.frame.origin.y)];
     collision.translatesReferenceBoundsIntoBoundary = YES;
     collision.collisionDelegate = self;
+    collision.collisionMode = UICollisionBehaviorModeEverything;
     //行为限制
     dynamicBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[boxView]];
     dynamicBehavior.elasticity = 0.5;
 }
 
+- (id<CAAction>)actionForLayer:(CALayer *)layer forKey:(NSString *)event
+{
+    NSLog(@"layer.center = %@, boxView.frame = %@", NSStringFromCGPoint(layer.position), NSStringFromCGRect(boxView.frame));
+    if (layer.position.y >= self.view.frame.size.height - boxView.frame.size.height / 2 - 0.001)
+    {
+        isGravity = NO;
+    }
+    return nil;
+}
 
+/**
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
 {
     if ([keyPath isEqualToString:@"frame"])
@@ -80,6 +97,7 @@
         }
     }
 }
+*/
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -117,16 +135,17 @@
     }
 }
 
-- (void)collisionBehavior:(UICollisionBehavior *)behavior endedContactForItem:(id<UIDynamicItem>)item1 withItem:(id<UIDynamicItem>)item2
+- (void)dynamicAnimatorDidPause:(UIDynamicAnimator *)animator
 {
-    
+    isGravity = NO;
 }
 
 
 - (void)dealloc
 {
     NSLog(@"attachmentViewController did dealloc");
-    [boxView removeObserver:self forKeyPath:@"frame"];
+    boxView.layer.delegate = nil;
+//    [boxView removeObserver:self forKeyPath:@"frame"];
 }
 
 

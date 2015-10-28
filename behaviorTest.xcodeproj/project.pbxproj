@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		398D03EB1BE108AF00BE1BC5 /* CoreAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 398D03EA1BE108AF00BE1BC5 /* CoreAnimationViewController.m */; };
 		E4DCC8821BDF1D7B00E6870B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DCC8811BDF1D7B00E6870B /* main.m */; };
 		E4DCC8851BDF1D7B00E6870B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DCC8841BDF1D7B00E6870B /* AppDelegate.m */; };
 		E4DCC8881BDF1D7B00E6870B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DCC8871BDF1D7B00E6870B /* ViewController.m */; };
@@ -42,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		398D03E91BE108AF00BE1BC5 /* CoreAnimationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreAnimationViewController.h; sourceTree = "<group>"; };
+		398D03EA1BE108AF00BE1BC5 /* CoreAnimationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreAnimationViewController.m; sourceTree = "<group>"; };
 		E4DCC87D1BDF1D7B00E6870B /* behaviorTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = behaviorTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4DCC8811BDF1D7B00E6870B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E4DCC8831BDF1D7B00E6870B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -145,6 +148,8 @@
 				E4DCC8C31BDF244200E6870B /* snapViewController.m */,
 				E4DCC8C51BDF24E700E6870B /* DynamicViewController.h */,
 				E4DCC8C61BDF24E700E6870B /* DynamicViewController.m */,
+				398D03E91BE108AF00BE1BC5 /* CoreAnimationViewController.h */,
+				398D03EA1BE108AF00BE1BC5 /* CoreAnimationViewController.m */,
 			);
 			path = behaviorTest;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 				E4DCC8BE1BDF242F00E6870B /* AttachmentViewController.m in Sources */,
 				E4DCC8B81BDF241600E6870B /* GravityViewController.m in Sources */,
 				E4DCC8C11BDF243900E6870B /* pushViewController.m in Sources */,
+				398D03EB1BE108AF00BE1BC5 /* CoreAnimationViewController.m in Sources */,
 				E4DCC8C41BDF244200E6870B /* snapViewController.m in Sources */,
 				E4DCC8BB1BDF242000E6870B /* CollisionViewController.m in Sources */,
 			);

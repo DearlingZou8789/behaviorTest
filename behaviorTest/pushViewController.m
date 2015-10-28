@@ -41,7 +41,8 @@
      */
     
     boxView.userInteractionEnabled = YES;
-    boxView.layer.delegate = self;
+//    这里不能boxView.layer.delegate为self,否则就会不连续的动画效果
+//    boxView.layer.delegate = self;
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panView:)];
     [boxView addGestureRecognizer:pan];
     

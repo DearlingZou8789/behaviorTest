@@ -41,7 +41,6 @@
      */
     
     boxView.userInteractionEnabled = YES;
-//    boxView.layer.delegate = self;
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panView:)];
     [boxView addGestureRecognizer:pan];
     
@@ -63,7 +62,7 @@
     gravity.magnitude = 0.9;
     //碰撞行为
     collision = [[UICollisionBehavior alloc] initWithItems:@[boxView]];
-    [collision addBoundaryWithIdentifier:@"barrier" fromPoint:barrierView.frame.origin toPoint:CGPointMake(barrierView.frame.origin.x + barrierView.frame.size.width, barrierView.frame.origin.y)];
+    [collision addBoundaryWithIdentifier:@"barrier" fromPoint:barrierView.frame.origin toPoint:CGPointMake(barrierView.frame.origin.x + barrierView.frame.size.width, barrierView.frame.origin.y )];
     collision.translatesReferenceBoundsIntoBoundary = YES;
     collision.collisionDelegate = self;
     collision.collisionMode = UICollisionBehaviorModeBoundaries;
@@ -72,15 +71,15 @@
     dynamicBehavior.elasticity = 0.5;
 }
 
-- (id<CAAction>)actionForLayer:(CALayer *)layer forKey:(NSString *)event
-{
-//    NSLog(@"layer.center = %@, boxView.frame = %@", NSStringFromCGPoint(layer.position), NSStringFromCGRect(boxView.frame));
-    if (layer.position.y >= self.view.frame.size.height - boxView.frame.size.height / 2 - 0.001)
-    {
-        isGravity = NO;
-    }
-    return nil;
-}
+//- (id<CAAction>)actionForLayer:(CALayer *)layer forKey:(NSString *)event
+//{
+////    NSLog(@"layer.center = %@, boxView.frame = %@", NSStringFromCGPoint(layer.position), NSStringFromCGRect(boxView.frame));
+//    if (layer.position.y >= self.view.frame.size.height - boxView.frame.size.height / 2 - 0.001)
+//    {
+//        isGravity = NO;
+//    }
+//    return nil;
+//}
 
 - (void)viewDidAppear:(BOOL)animated
 {

@@ -21,15 +21,15 @@
     self.navigationController.navigationBar.translucent = NO;
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UIView *mountainView = [[UIView alloc] initWithFrame:CGRectMake(20, 30, 100, 130)];
+    UIView *mountainView = [[UIView alloc] initWithFrame:CGRectMake(120, 30, 100, 130)];
     mountainView.backgroundColor = [UIColor magentaColor];
     [self.view addSubview:mountainView];
     
-    UIView *treeView = [[UIView alloc] initWithFrame:CGRectMake(150, 70, 20, 70)];
+    UIView *treeView = [[UIView alloc] initWithFrame:CGRectMake(300, 70, 20, 70)];
     treeView.backgroundColor = [UIColor greenColor];
     [self.view addSubview:treeView];
     
-    UIView *cowBodyView = [[UIView alloc] initWithFrame:CGRectMake(50, 200, 40, 20)];
+    UIView *cowBodyView = [[UIView alloc] initWithFrame:CGRectMake(150, 200, 40, 20)];
     cowBodyView.backgroundColor = [UIColor brownColor];
     [self.view addSubview:cowBodyView];
     

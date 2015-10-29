@@ -14,6 +14,7 @@
 #import "snapViewController.h"
 #import "DynamicViewController.h"
 #import "CoreAnimationViewController.h"
+#import "CoreAnimationViewController1.h"
 
 @interface behaviorTableViewController ()
 {
@@ -38,7 +39,8 @@
                   @{@"UIPushBehavior":@"推行为"},
                   @{@"UISnapBehavior":@"甩行为"},
                   @{@"UIDynamicItemBehavior":@"行为限制"},
-                  @{@"CoreAnimation":@"动画视图"}];
+                  @{@"CoreAnimation":@"动画视图"},
+                  @{@"CoreAnimation1":@"动画视图1"}];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 //    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentify];
 }
@@ -55,7 +57,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 7;
+    return 8;
 }
 
 
@@ -96,6 +98,9 @@
             break;
         case 6:
             vc = [[CoreAnimationViewController alloc] init];
+            break;
+        case 7:
+            vc = [[CoreAnimationViewController1 alloc] init];
             break;
         default:
             break;

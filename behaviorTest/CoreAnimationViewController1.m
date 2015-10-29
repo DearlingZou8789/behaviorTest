@@ -147,7 +147,7 @@
     //添加抖动动画,对应layer的属性为transform.rotation
     CAKeyframeAnimation *key2 = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation"];
     //持续动画效果
-    key2.duration = 1.0f;
+    key2.duration = 0.8f;
     //设置图标抖动弧度
     //把度数转换弧度 度数/180*M_PI
     key2.values = @[@(angle2Radian(0)), @(angle2Radian(10)), @(angle2Radian(0)), @(-angle2Radian(10)), @(angle2Radian(0))];
@@ -164,7 +164,7 @@
 - (void)addLargeOrSmall
 {
     CAKeyframeAnimation *key2 = [CAKeyframeAnimation animationWithKeyPath:@"bounds"];
-    key2.duration = 1.0f;
+    key2.duration = 0.8f;
     key2.values = @[[NSValue valueWithCGRect:CGRectMake(0, 0, 50, 50)], [NSValue valueWithCGRect:CGRectMake(0, 0, 70, 70)], [NSValue valueWithCGRect:CGRectMake(0, 0, 50, 50)]];
     key2.repeatCount = repeatCounts;
     key2.fillMode = kCAFillModeForwards;

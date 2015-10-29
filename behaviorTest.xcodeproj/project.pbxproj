@@ -24,6 +24,10 @@
 		E4DCC8C41BDF244200E6870B /* snapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DCC8C31BDF244200E6870B /* snapViewController.m */; };
 		E4DCC8C71BDF24E700E6870B /* DynamicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DCC8C61BDF24E700E6870B /* DynamicViewController.m */; };
 		E4DCC9121BE1B96000E6870B /* CoreAnimationViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DCC9111BE1B96000E6870B /* CoreAnimationViewController1.m */; };
+		E4DCC9151BE1ECE900E6870B /* UIColor+helper.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DCC9141BE1ECE900E6870B /* UIColor+helper.m */; };
+		E4DCC91B1BE1ED1C00E6870B /* UIColor+AddColor.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DCC9181BE1ED1C00E6870B /* UIColor+AddColor.m */; };
+		E4DCC91C1BE1ED1C00E6870B /* UIColor+helper.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DCC91A1BE1ED1C00E6870B /* UIColor+helper.m */; };
+		E4DCC91F1BE1EE0D00E6870B /* colorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DCC91E1BE1EE0D00E6870B /* colorModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +82,14 @@
 		E4DCC8C61BDF24E700E6870B /* DynamicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicViewController.m; sourceTree = "<group>"; };
 		E4DCC9101BE1B96000E6870B /* CoreAnimationViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreAnimationViewController1.h; sourceTree = "<group>"; };
 		E4DCC9111BE1B96000E6870B /* CoreAnimationViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreAnimationViewController1.m; sourceTree = "<group>"; };
+		E4DCC9131BE1ECE900E6870B /* UIColor+helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+helper.h"; sourceTree = "<group>"; };
+		E4DCC9141BE1ECE900E6870B /* UIColor+helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+helper.m"; sourceTree = "<group>"; };
+		E4DCC9171BE1ED1C00E6870B /* UIColor+AddColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AddColor.h"; sourceTree = "<group>"; };
+		E4DCC9181BE1ED1C00E6870B /* UIColor+AddColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AddColor.m"; sourceTree = "<group>"; };
+		E4DCC9191BE1ED1C00E6870B /* UIColor+helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+helper.h"; sourceTree = "<group>"; };
+		E4DCC91A1BE1ED1C00E6870B /* UIColor+helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+helper.m"; sourceTree = "<group>"; };
+		E4DCC91D1BE1EE0D00E6870B /* colorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = colorModel.h; sourceTree = "<group>"; };
+		E4DCC91E1BE1EE0D00E6870B /* colorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = colorModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +140,9 @@
 		E4DCC87F1BDF1D7B00E6870B /* behaviorTest */ = {
 			isa = PBXGroup;
 			children = (
+				E4DCC9161BE1ED1C00E6870B /* ColorCategory */,
+				E4DCC9131BE1ECE900E6870B /* UIColor+helper.h */,
+				E4DCC9141BE1ECE900E6870B /* UIColor+helper.m */,
 				E4DCC8831BDF1D7B00E6870B /* AppDelegate.h */,
 				E4DCC8841BDF1D7B00E6870B /* AppDelegate.m */,
 				E4DCC8861BDF1D7B00E6870B /* ViewController.h */,
@@ -183,6 +198,19 @@
 				E4DCC8A71BDF1D7B00E6870B /* Info.plist */,
 			);
 			path = behaviorTestUITests;
+			sourceTree = "<group>";
+		};
+		E4DCC9161BE1ED1C00E6870B /* ColorCategory */ = {
+			isa = PBXGroup;
+			children = (
+				E4DCC91D1BE1EE0D00E6870B /* colorModel.h */,
+				E4DCC91E1BE1EE0D00E6870B /* colorModel.m */,
+				E4DCC9171BE1ED1C00E6870B /* UIColor+AddColor.h */,
+				E4DCC9181BE1ED1C00E6870B /* UIColor+AddColor.m */,
+				E4DCC9191BE1ED1C00E6870B /* UIColor+helper.h */,
+				E4DCC91A1BE1ED1C00E6870B /* UIColor+helper.m */,
+			);
+			path = ColorCategory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,14 +343,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4DCC91C1BE1ED1C00E6870B /* UIColor+helper.m in Sources */,
 				E4DCC8C71BDF24E700E6870B /* DynamicViewController.m in Sources */,
 				E4DCC8881BDF1D7B00E6870B /* ViewController.m in Sources */,
+				E4DCC9151BE1ECE900E6870B /* UIColor+helper.m in Sources */,
 				E4DCC8851BDF1D7B00E6870B /* AppDelegate.m in Sources */,
 				E4DCC8821BDF1D7B00E6870B /* main.m in Sources */,
 				E4DCC8B51BDF211A00E6870B /* behaviorTableViewController.m in Sources */,
+				E4DCC91F1BE1EE0D00E6870B /* colorModel.m in Sources */,
 				E4DCC8BE1BDF242F00E6870B /* AttachmentViewController.m in Sources */,
 				E4DCC9121BE1B96000E6870B /* CoreAnimationViewController1.m in Sources */,
 				E4DCC8B81BDF241600E6870B /* GravityViewController.m in Sources */,
+				E4DCC91B1BE1ED1C00E6870B /* UIColor+AddColor.m in Sources */,
 				E4DCC8C11BDF243900E6870B /* pushViewController.m in Sources */,
 				398D03EB1BE108AF00BE1BC5 /* CoreAnimationViewController.m in Sources */,
 				E4DCC8C41BDF244200E6870B /* snapViewController.m in Sources */,

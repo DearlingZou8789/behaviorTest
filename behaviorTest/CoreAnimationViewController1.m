@@ -37,6 +37,12 @@
 
 - (void)btnClick:(UIButton *)btn
 {
+//    [self animation1];
+    [self animation2];
+}
+
+- (void)animation1
+{
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     animation.duration = 3.0;
     animation.fromValue = @.25;
@@ -44,6 +50,29 @@
     animation.cumulative = YES;
     animation.repeatCount = 2;
     animation.fillMode = kCAFillModeForwards;
+    animation.removedOnCompletion = NO;
+    [planeView.layer addAnimation:animation forKey:@"animateOpacity"];
+    
+    CGAffineTransform moveTransform = CGAffineTransformMakeTranslation(200, 500);
+    CABasicAnimation *basicAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
+    basicAnimation.duration = 6.0;
+    basicAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeAffineTransform(moveTransform)];
+    basicAnimation.fillMode = kCAFillModeForwards;
+    basicAnimation.removedOnCompletion = NO;
+    basicAnimation.repeatCount = 2;
+    [planeView.layer addAnimation:basicAnimation forKey:@"animateTransform"];
+}
+
+- (void)animation2
+{
+    //关键帧动画效果
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
+    animation.duration = 6.0;
+    animation.values = @[@0.25, @0.75, @1.0];
+    animation.keyTimes = @[@0.0, @0.5, @1.0];
+    //设置动画结束时候状态,保持动画结束值
+    animation.fillMode = kCAFillModeForwards;
+    //设置动画结束时候不停止,必须先设置fillMode的属性
     animation.removedOnCompletion = NO;
     [planeView.layer addAnimation:animation forKey:@"animateOpacity"];
     
